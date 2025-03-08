@@ -18,12 +18,8 @@ def run_app():
             emotion = recognize_expression(face_region) #we then pass face_region as a parameter in the recognize_expression function which detects the face and predicts the emotion,these are then stored in emotion variable
 
             cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 255, 255), 2) #used to draw rectangle around the detected face, the parameter passed are current frame, coordinates of the rectangle, color of the rectangle and thickness of the rectangle
-            
-            y_offset = 20
-            for emotion, score in emotion.items():
-                text = f"{emotion}: {score:.2f}%"
-                cv2.putText(frame, text, (x, y - y_offset), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2) #used to display the text of the emotion which is detected by the program,
-                y_offset += 20
+            cv2.putText(frame, emotion, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)#used to display the text i.e the emotion detected and shown
+           
 
         cv2.imshow('UP App', frame) #this will open a window with title UP app and displaying the current frame captured from the webcam
 
